@@ -78,7 +78,7 @@ install.packages(pkgs)
 
 For post-processing model outputs *Latex* is required
 (https://www.latex-project.org/get/). To be seen by the model it also needs to
-added to the PATH variable of your system.
+be added to the PATH variable of your system.
 
 If the following lines of code are executed withour error, then you are all set!
 ```{r, eval=FALSE}
