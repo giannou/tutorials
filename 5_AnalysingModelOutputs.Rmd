@@ -52,5 +52,5 @@ shinyresults::appMAgPIElocal()
 If you want to go beyond visual output analysis and predefined output evaluation facilited by scripts in the model folders **scripts/output/single** and **scripts/output/comparison**, you can use the functionality of the R package *magpie4* (https://github.com/pik-piam/magpie4). This library contains a list of common functions for extracting outputs from the MAgPIE model which are also the basis for the generation of thze automated validation pdf.
 
 
-
+# 5. Analysis of outputs with the gdx library
 
