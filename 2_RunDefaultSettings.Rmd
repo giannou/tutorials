@@ -1,0 +1,43 @@
+---
+title: "Start running it with default settings"
+subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+author: Kristine Karstens (karstens@pik-potsdam.de)
+output:
+  pdf_document: default
+  toc: yes
+  toc_float: true
+  html_notebook: default
+---
+
+# 1. Introduction
+
+Whereas MAgPIE inner core is written in GAMS, it comes with an outer layer for data handling in R. This also applies to the start of MAgPIE. 
+
+
+# 2. Starting MAgPIE
+
+## 1.1. Start Scripts 
+
+
+
+To run the model execute `Rscript start.R` (or `source("start.R")` from within R) in the main folder of the model.
+This will give you a list of available run scripts you can choose from. You can
+also add your own run scripts by saving them in the folder scripts/start. To run
+a single model run with settings as stated in default.cfg you can choose start
+script "default". Make sure that the config file has been set correctly before
+starting the model.
+
+
+
+Rscript start.R
+
+
+** README.txt
+
+
+## 1.2. Phases of model execution
+
+-->  1.4 Problem Troubling shooting
+
+## 1.3. Stopping the model
