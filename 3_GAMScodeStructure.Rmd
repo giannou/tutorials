@@ -1,0 +1,28 @@
+---
+title: "Look at the GAMS code and its structure"
+subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+author: Kristine Karstens (karstens@pik-potsdam.de)
+output:
+  pdf_document: default
+  toc: yes
+  toc_float: true
+  html_notebook: default
+---
+
+# 1. Introduction
+
+* generell structure of a module:
+** realizations
+*** input
+*** sets
+*** declarations
+*** preloop
+*** presolve
+*** equations
+*** postsolve
+
+(*** intersolve)
+
+
+* example
