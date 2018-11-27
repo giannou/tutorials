@@ -1,0 +1,51 @@
+---
+title: "Changing inputs in MAgPIE model"
+author: "Mi&#x0161;ko Stevanovi&#x0107; (stevanovic@pik-potsdam.de)"
+output:
+  html_notebook: default
+  html_document: default
+  pdf_document: default
+  word_document: default
+subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
+---
+
+# 1. Introduction
+
+The input data for MAgPIE is prepared by a set of pre-processing routines that take the data from original sources (e.g. FAO, LPJmL...), execute additional calculations and convert it to the required MAgPIE parameter format. These pre-processing routines are not accessible as open source at the moment. A user is instead provided with a readymade inputs that are necessary for the model execution. 
+
+The input files are setup in the config file `config/default.cfg`, usually at the beginning of the settings. Currently, the input data is set as: 
+
+```{r}
+cfg$input <- "magpie4.0_default_sep18.tgz"
+```
+
+The prepared input data is a compressed tar archive file "`.tgz`", which can be opened with software such as [7-Zip](https://www.7-zip.org/), or in terminal by `tar` and `untar` commands. The data archive file contains the following types of data: 
+
+* climate depended bio-physical data from a crop model (region and cell specific, crop yields, water requirements, terrestrial carbon content...) 
+* processed data from other data sources used for parametrizatino of MAgPIE (FAO, SSP, GTAP...)
+* processed data from other data sources used for validation of MAgPIE output
+* additional data prepared for model parametrization (national policies...)
+* calibration factors 
+
+
+## 2. Demonstration of change in input data for national land-based NDC policies
+
+### 2.1. Create folder for local repository
+
+### 2.2. Create a patched file policy_definition.csv and package it with lucode::tardir()
+
+### 2.3. Store patch as patch.tgz in the local repository
+
+### 2.4. Add it to cfg$repositories
+
+### 2.5. Add patch.tgz at the end of cfg$input
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

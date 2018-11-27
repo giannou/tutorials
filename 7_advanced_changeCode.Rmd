@@ -4,10 +4,10 @@ subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Florian Humpenöder (humpenoeder@pik-potsdam.de)
 output:
-  pdf_document: default
+  html_notebook: default
   toc: yes
   toc_float: true
-  html_notebook: default
+  pdf_document: default
 ---
 
 # 1. Introduction

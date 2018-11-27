@@ -2,8 +2,8 @@
 title: "Analyzing MAgPIE model outputs"
 author: "Isabelle Weindl (weindl@pik-potsdam.de)"
 output:
-  html_notebook: default
   html_document: default
+  html_notebook: default
   pdf_document: default
   word_document: default
 subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
