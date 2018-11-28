@@ -2,12 +2,12 @@
 title: "Advanced: Change MAgPIE GAMS Code"
 subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-author: Florian HumpenÃ¶der (humpenoeder@pik-potsdam.de)
+author: Florian Humpenöder (humpenoeder@pik-potsdam.de)
 output:
-  html_notebook: default
+  pdf_document: default
   toc: yes
   toc_float: true
-  pdf_document: default
+  html_notebook: default
 ---
 
 # 1. Learning objectives
