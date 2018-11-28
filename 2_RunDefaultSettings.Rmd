@@ -1,5 +1,5 @@
 ---
-title: "Start running it with default settings"
+title: "Start running MAgPIE with default settings"
 subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Kristine Karstens (karstens@pik-potsdam.de)
