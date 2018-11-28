@@ -30,9 +30,60 @@ The prepared input data is a compressed tar archive file "`.tgz`", which can be 
 
 ## 2. Demonstration of change in input data for national land-based NDC policies
 
-### 2.1. Create folder for local repository
+Once the input data is downloaded to the local MAgPIE repository in forms of different input files in designated input folders (in the core, scripts, modules and module realizations), a user can update or change these input data files. This can be done directly my manipulating the files, but this apporach carries a risk that such changes are not documented and that in certain cases the made changes can be overwriten by the repeated download of the date from the declared repositories. In order to avoid this risk, it is recomended to create a local folder the serves as a repository for the patch files that will apply changes to the data by overwriting the original data.  
+
+### 2.1. Create folder for local input data repository
+
+The folder for local input data reporistry can be created anywhere and it's path must be provided to the settings in `config/default.cfg` file. 
+
+Let us assume that the patch folder (`patch_inputdata`) is created in the main MAgPIE reporsity. One can do it in R: 
+
+```{r}
+dir.create("./patch_inputdata")
+```
+or in the command line:
+```{cmd}
+mkdir patch_inputdata
+```
+
+Once the directory is created, provide its location to the configuration file. It's important to keep the list structure of the reporsotory information: 
+```{r}
+cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public"=NULL,
+                                "./patch_inputdata"=NULL),
+                           getOption("magpie_repos"))
+```
+
 
 ### 2.2. Create a patched file policy_definition.csv and package it with lucode::tardir()
+
+Create a subdirectory in the `./patch_inputdata` which is going to be used for packaging of the patched files. 
+```{eval=FALSE}
+dir.create("./patch_inputdata/patch_ndc_usa_181206")
+```
+
+
+Copy the original file the `policy_definition.csv` in the patch floder. 
+In R: 
+```{r}
+file.copy(from="./scripts/npi_ndc/policies/policy_definitions.csv",to="./patch_inputdata/patch_ndc_usa_181206/.")
+```
+or in the command line:
+```{cmd}
+cp scripts/npi_ndc/policies/policy_definitions.csv patch_inputdata/patch_ndc_usa_181206/.
+```
+
+Edit the content, in this case update the USA  afforestation NDC policy (`affore`) with a more ambitous target of 15 MHa of afforested area starting in 2020 and reaching the target at 2030:  
+```{txt}
+USA,affore,ndc,1,2020,2030,15
+```
+
+After saving the file package it with the tardir function in R only: 
+```{r}
+lucode::tardir(dir=)
+```
+
+
+
 
 ### 2.3. Store patch as patch.tgz in the local repository
 
@@ -40,12 +91,6 @@ The prepared input data is a compressed tar archive file "`.tgz`", which can be 
 
 ### 2.5. Add patch.tgz at the end of cfg$input
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+# 3. Additional information 
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
-
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+There are other pre-processed input data that have different regional resolution. 
