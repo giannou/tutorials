@@ -12,7 +12,6 @@ subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 # 1. Introduction
 
 ### 1.1. Output analysis
-
 After having succesfully started and accomplished a simualtion run, the next step is to evaulate the simulation results.
 There are several ways to assess and evaluate MAgPIE results. This tutorial gives an overview on different tools and options that can be used to analyse model outputs. 
 
@@ -32,10 +31,11 @@ The goal of this exercise is to use several tools for output analysis. After com
 # 2. Model-internal R-scripts for output analysis
 
 ### 2.1. Execution of model-internal output scripts via the MAgPIE configuartion file
-In the file "config/default.cfg", it is possible to indicate which R-scripts are executed for output analysis, after a model run is finished. Scripts evaluating single runs are stored in the folder **scripts/output/single**, while the folder **scripts/output/comparison** contains scripts that compare model output across several runs. In the default MAgPIE configuration, the scripts *rds_report* (to be used in appMAgPIE; see explanations below), *validation* and *interpolation* are selected via cfg$output: 
+In the file "config/default.cfg", it is possible to indicate which R-scripts are executed for output analysis after a model run is finished. Scripts evaluating single runs are stored in the folder **scripts/output/single**, while the folder **scripts/output/comparison** contains scripts that compare model output across several runs. In the default MAgPIE configuration, the scripts *rds_report* (to be used in appMAgPIE; see explanations below), *validation* and *interpolation* are selected via cfg$output: 
 
-
-`cfg$output <- c("rds_report","validation","interpolation")`
+```{r, warning=FALSE, comment=NA,eval=FALSE}
+cfg$output <- c("rds_report","validation","interpolation")
+``` 
 
 ### 2.2. Execution of model-internal output scripts in the command window
 Output scripts that are included in the folders **scripts/output/single** and **scripts/output/comparison** can also be executed via command window. To do so, windows users can open a command line prompt in the MAgPIE model folder by using **shift** + **right click** and then selecting *open command window here* option.
@@ -55,14 +55,42 @@ knitr::include_graphics("figures/Rscript_outputR.png")
 
 In both cases, you can choose from the list of available model simulations, for which runs you want to conduct the model output analysis: 
 
-In the next step, you can interactively indicate which output function you want to execute.
+```{r, echo=FALSE, fig.cap="Selection of model runs", out.width = '30%',fig.align='center'}
+knitr::include_graphics("figures/Rscript_output_runselection.png")
+```
 
-# 2. Automated model validation
-If the validation script is executed, a standard evaluation pdf is created that validates numerous model outputs with a validation database containing historical data and projections for most outputs returned by the model, either visually or via statistical tests. A standard evaluation PDF consists of hundreds of evaluation outputs and usually has a length of around 1800 pages. By evaluating the model outputs on such a broad level rather than focusing only key outputs it allows to get a more complete picture of the corresponding simulation. 
+In the next step, you can interactively indicate which model-internal output scripts you want to execute:
+
+```{r, echo=FALSE, fig.cap="Selection of model-internal output scripts", out.width = '30%',fig.align='center'}
+knitr::include_graphics("figures/Rscript_output_scriptselection.png")
+```
+
+The last step is to select the run submission type, e.g."Direct execution":
+
+```{r, echo=FALSE, fig.cap="Selection of run submission type", out.width = '30%',fig.align='center'}
+knitr::include_graphics("figures/Rscript_output_submissiontype.png")
+```
+
+Now, the selected scripts are executed. After completion, the results are written in the resceptive folder of the simulation run (combination of **model title** name and the **current date** inside the **output** folder of the model).
+
+
+### 2.3. Excercise
+Execute the model-internal output script **report.R** via command window. This script collects the results of several report-functions - that calculate many key output variables like Production, Land Use or Yields - and writes them into one mif-file that can be read with text editors.
+
+
+# 3. Automated model validation
+The automated model validation is a special case of output analysis based on model-internal scripts (see section 2). If the validation script is executed (either by selection via cfg$output as explained in 2.1. or by execution via command window as explained in 2.2.), a standard evaluation pdf is created that validates numerous model outputs with a validation database containing historical data and projections for most outputs returned by the model, either visually or via statistical tests. A standard evaluation PDF consists of hundreds of evaluation outputs and usually has a length of around 1800 pages. By evaluating the model outputs on such a broad level rather than focusing only on key outputs, it allows to get a more complete picture of the corresponding simulation. 
+
+The table of contents of the validation pdf gives a good overview about the breadth of model outputs that can be simulated with a MAgPIE standard simulation, eventhough the validation pdf only shows a subset of possible model outputs:
+
+```{r, echo=FALSE, fig.cap="Table of contents of the validation pdf", out.width = '30%',fig.align='center'}
+knitr::include_graphics("figures/toc_validationpdf.png")
+```
+
 
 However, comparison between model runs, i.e. between different scenarios, is rather difficult and inconvenient if the model results are scattered across different large PDF files. 
 
-# 3. Interactive scenario analysis
+# 4. Interactive scenario analysis
 To overcome this issue, we developed the interactive scenario analysis and evaluation tools appMAgPIE and appMAgPIElocal as part of the library *shinyresults* (https://github.com/pik-piam/shinyresults), which show evaluation plots for multiple scenarios including historical data and other projections based on an interactive selection of regions and variables. You can use this tool by running the following R command in the main folder of your model, which will automatically collect all runs in the output folder and visualize them: 
 
 ```{r comment=NA,eval=FALSE}
@@ -86,7 +114,7 @@ knitr::include_graphics("figures/appMAgPIE_runselection.png")
 ```
 
 
-## 3.1. Excercise
+### 4.1. Excercise
 
 Choose *title* as filter and select the SSP2 and SSP3 simulations:
 
@@ -113,10 +141,22 @@ knitr::include_graphics("figures/appMAgPIE_LinePlot_variables.png")
 
 
 
-# 4. Analysis of outputs with the magpie4 library
+# 5. Analysis of outputs with the magpie4 library
 
 If you want to go beyond visual output analysis and predefined output evaluation facilited by scripts in the model folders **scripts/output/single** and **scripts/output/comparison**, you can use the functionality of the R package *magpie4* (https://github.com/pik-piam/magpie4). This library contains a list of common functions for extracting outputs from the MAgPIE model which are also the basis for the generation of thze automated validation pdf.
 
 
-# 5. Analysis of outputs with the gdx library
+# 6. Analysis of outputs with the gdx library
+
+
+
+
+# 7. What you have learned
+
+1. You have an overview on several tools for analyizing MAgPIE ouputs. 
+2. You know how to start **model-internal R-scripts**.
+3. You know how to generate and where to find the **automated validation pdf** and how it is structured.
+4. You know how to start the evaluation tool **appMAgPIElocal** of the library **shinyresults** and how you can visualized MAgPIE results with this tool.
+4. You know the general functionality of the **magpie4 library**.
+5. You know the general functionality of the **gdx library**.
 
