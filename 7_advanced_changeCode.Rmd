@@ -10,7 +10,7 @@ output:
   pdf_document: default
 ---
 
-# 1. Introduction
+# 1. Learning objectives
 
 MAgPIE has a modular concept. Each module (e.g. cropland) can have several realization (e.g. dynamic and static).
 This tutorial shows how to add a new realization to a module in 4 steps:
@@ -29,8 +29,7 @@ In the MAgPIE 4.0 release the cropland module (30_crop) has only one realization
 We first copy-paste the folder "endo_jun13" and the file "endo_jun13.gms" (both located in "modules/30_crop"), and rename them to "bioen_irrig" and "bioen_irrig.gms" respectivly.
 
 # 2.2 Step 2
-To include the new realization "bioen_irrig" properly into the GAMS code we run the following R command in the main folder.
-
+To include the new realization "bioen_irrig" properly into the GAMS code we run a specific R command in the main folder. First navigate in your command line to the MAgPIE main folder, then open a new R session (type "R" followed by ENTER), and then copy-paste the following R command:
 ```{r comment=NA,eval=FALSE}
 lucode::update_modules_embedding()
 ```
@@ -39,14 +38,23 @@ lucode::update_modules_embedding()
 The prohibition of irrigated bioenergy is specified in the file "presolve.gms" within the "bioen_irrig" realization.
 We just have to remove (or comment out) lines 7-9 from this file to allow for irrigation of bioenergy crops. 
 
+```{r comment=NA,eval=FALSE}
 *vm_area.fx(j,"begr","irrigated")=0;
 *vm_area.fx(j,"begr","irrigated")=0;
 *vm_area.fx(j,"betr","irrigated")=0;
+```
 
 # 2.4 Step 4
 To test the new realization we have to make a change in the file "config/default.cfg" in line 218.
 We change 
+```{r comment=NA,eval=FALSE}
 cfg$gms$crop    <- "endo_jun13"
+```
 to 
+```{r comment=NA,eval=FALSE}
 cfg$gms$crop    <- "bioen_irrig"
-We can then start the model run with Rscript start.R -> 1: default -> 1: Direct execution.
+```
+We can then start the model run with 
+```{r comment=NA,eval=FALSE}
+Rscript start.R -> 1: default -> 1: Direct execution
+```
