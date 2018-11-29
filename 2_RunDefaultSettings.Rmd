@@ -115,7 +115,7 @@ Preprocessing starts with the execution of `Rscript start.R` and includes the fo
 |4. npi/ndc calculation            | calculate for specific cluster and regional settings the                                                     representation of land based npi/ndc policies within the model                                             | scripts/npi_ndc/start_npi_ndc.R |
 |5. yield calibration              | calculates a regional yield calibration factor based on a pre run of                                         magpie to be inline with FAO production data                                                               | scripts/calibration/calc_calib.R |
 |6. gams code submission           | execute gams command to final run the gams model,                                                            start post-processing after run finished                                                                   | scripts/run_submit/submit.R |
-|   - unlock model folder -        | delete `.lock` folder, be ready for next call of start script                                              | scripts/start_function.R 
+|   - unlock model folder -        | delete `.lock` folder, be ready for next call of start script                                              | scripts/start_function.R |
 
 Several of these steps will generate terminal output. 
 
@@ -155,13 +155,39 @@ Several of these steps will generate terminal output. More information in tutori
 
 # 4. First ideas of troubleshooting
 
+Here we listed some troubles and where to find them: 
+
+|step|                              | possible issues:                           |
+|:----|:-----------------------------|:-------------------------------------------|
+|pre1.| job submission                 | General R issues (missing PATH variables)               |                              
+|   |- lock model folder -             |  `.lock` folder not deleted after termination of a run   |        
+|pre2.| configurate run and code check | missing libraries, failed code check (after change in the code) |
+|pre3.| input data                     | no internet connection, input data not available (check spelling)     |                    
+|pre4.| npi/ndc calculation            |        | 
+|pre5.| yield calibration              | general gams issues (compilation or solver failures, missing PATH variables) | 
+|pre6.| gams code submission           |        | 
+|     |- unlock model folder -         |        | 
+|gams1.| code complilation             | general gams issues (compilation or solver failures, missing PATH variables)|
+|gams2.| code execution for each time step:  ||
+|gams2.1.| solve food demand model           | Infeasibilties |
+|gams2.2.| solve magpie model                | Infeasibilties |
+|gams2.3.| iterate food demand and magpie model till convergence is reached       ||
+|post1.| Submit run statistics                    | No access to repository (not critical)  | 
+|post2.| Execute configured output scripts        |   | 
+|post2.1.| rds report     | missing libraries (specially gdx, gdxrrw, magpie4) | 
+|post2.2.| validation     | latexrelated r-extension are not working or missing     | 
+|post2.3.| interpolation  |     | 
+|post2.4.| (others)       | r extension are missing (e.g. ncdf)    |
+
+> **Exercise**: If your run fails, try to find out with the help of terminal output and `full.lst`, `full.log`, what went wrong.
+
 # 5. Stop the model
 
-* The model can be stopped with `Strg` + `C`.  
+* The model can be stopped with `Crtl` + `C`.  
 * If you run it in `background mode` you have to kill the job over the Task Manager or process handler (linux: `top`). 
-* Make sure that you delete the `.lock` folder, if it was not deleted automatically to unlock the model after a run interruption.
+* Make sure that you delete the `.lock` folder, if it was not deleted automatically to unlock the model after a termination of a run.
 
-> **Exercise**: Stop the magpie run with `Strg` + `C`.
+> **Exercise**: Stop the magpie run with `Crtl` + `C`.
 
 # 7. Lessons learned
 
@@ -169,5 +195,3 @@ Several of these steps will generate terminal output. More information in tutori
 2. You had a look into on the **terminal output** and the **full.lst**.
 3. Maybe: you solved some first issues. 
 4. You stopped a MAgPIE run.
-
-1. 
