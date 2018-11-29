@@ -13,8 +13,8 @@ output:
 ## HOW TO INSTALL
 MAgPIE requires *GAMS* (https://www.gams.com/) including licenses for the
 solvers *CONOPT* and (optionally) *CPLEX* for its core calculations. For the day
-of the workshop all licenses will be provided as time-limited course licenses. 
-As the model benefits significantly of recent improvements in *GAMS* and *CONOPT4* 
+of the workshop all licenses will be provided as time-limited training licenses. 
+As the model benefits significantly from recent improvements in *GAMS* and *CONOPT4* 
 it is recommended to work with the most recent versions of both. 
 Please make sure that the GAMS installation path is added to the PATH variable
 of the system:

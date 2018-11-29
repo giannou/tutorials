@@ -1,15 +1,13 @@
 ---
-title: "Start running it with default settings"
-author: "Kristine Karstens (karstens@pik-potsdam.de)"
+title: "Start running MAgPIE with default settings"
+subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
+author: Kristine Karstens (karstens@pik-potsdam.de)
 output:
   html_notebook: default
   pdf_document: default
-  html_document:
-    df_print: paged
   toc: yes
-  toc_float: yes
-subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
+  toc_float: true
 ---
 
 # 1. Introduction
@@ -87,7 +85,7 @@ Number:
 
 To run a the code within your terminal you choose **`Direct execution`** (again via `1` and `Enter`).
 
-> **Task**: Start a magpie run with the `default` start scrpit as `Direct execution`.
+> **Exercise**: Start a magpie run with the `default` start scrpit as `Direct execution`.
 
 ### More details:
 
@@ -121,11 +119,11 @@ Preprocessing starts with the execution of `Rscript start.R` and includes the fo
 
 Several of these steps will generate terminal output. 
 
-> **Task**: Match the terminal output to steps of preprocessing.
+> **Exercise**: Match the terminal output to steps of preprocessing.
 
 ## GAMS model execution
 
-The GAMS code execution is started with submit.R and by default there is no output on your terminal with regard to the optimizations prozess. You can find output at
+The GAMS code execution is started with submit.R and by default there is no output on your terminal with regard to the optimizations prozess. You can find output in the output folder of the run:
 
 * `output/[run_title]/full.lst` - complitation, execution & iteration log and summaries
 * `output/[run_title]/full.log` - optimization log (detailed solver output)
@@ -138,7 +136,7 @@ The GAMS code execution is started with submit.R and by default there is no outp
 |2.2. solve magpie model                                                     |full.lst, full.log|
 |2.3. iterate food demand and magpie model till convergence is reached       |full.lst|
 
-> **Task**: Open the `full.lst` and locate the different steps of gams model run.
+> **Exercise**: Open the `full.lst` and locate the different steps of gams model run.
 
 ## Postprosessing
 
@@ -163,3 +161,13 @@ Several of these steps will generate terminal output. More information in tutori
 * If you run it in `background mode` you have to kill the job over the Task Manager or process handler (linux: `top`). 
 * Make sure that you delete the `.lock` folder, if it was not deleted automatically to unlock the model after a run interruption.
 
+> **Exercise**: Stop the magpie run with `Strg` + `C`.
+
+# 7. Lessons learned
+
+1. You started a MAgPIE run with the predefined **`default` start scripts**.
+2. You had a look into on the **terminal output** and the **full.lst**.
+3. Maybe: you solved some first issues. 
+4. You stopped a MAgPIE run.
+
+1. 
