@@ -50,25 +50,25 @@ You are now asked to choose the output mode:
 1: Output for single run
 2: Comparison across runs
 
-```{r, echo=FALSE, fig.cap="Executing output scripts via command window", out.width = '30%',fig.align='center'}
+```{r, echo=FALSE, fig.cap="Executing output scripts via command window", out.width = '70%',fig.align='center'}
 knitr::include_graphics("figures/Rscript_outputR.png")
 ```
 
 In both cases, you can choose from the list of available model simulations, for which runs you want to conduct the model output analysis: 
 
-```{r, echo=FALSE, fig.cap="Selection of model runs", out.width = '30%',fig.align='center'}
+```{r, echo=FALSE, fig.cap="Selection of model runs", out.width = '70%',fig.align='center'}
 knitr::include_graphics("figures/Rscript_output_runselection.png")
 ```
 
 In the next step, you can interactively indicate which model-internal output scripts you want to execute:
 
-```{r, echo=FALSE, fig.cap="Selection of model-internal output scripts", out.width = '30%',fig.align='center'}
+```{r, echo=FALSE, fig.cap="Selection of model-internal output scripts", out.width = '70%',fig.align='center'}
 knitr::include_graphics("figures/Rscript_output_scriptselection.png")
 ```
 
 The last step is to select the run submission type, e.g."Direct execution":
 
-```{r, echo=FALSE, fig.cap="Selection of run submission type", out.width = '30%',fig.align='center'}
+```{r, echo=FALSE, fig.cap="Selection of run submission type", out.width = '70%',fig.align='center'}
 knitr::include_graphics("figures/Rscript_output_submissiontype.png")
 ```
 
@@ -88,7 +88,7 @@ The automated model validation is an important example of output analysis based 
 ### 3.2. Coverage of model outputs
 The table of contents of the validation pdf gives a good overview about the breadth of model outputs that can be simulated with a MAgPIE standard simulation, even though the validation pdf only shows a subset of possible model outputs:
 
-```{r, echo=FALSE, fig.cap="Table of contents of the validation pdf", out.width = '30%',fig.align='center'}
+```{r, echo=FALSE, fig.cap="Table of contents of the validation pdf", out.width = '70%',fig.align='center'}
 knitr::include_graphics("figures/toc_validationpdf.png")
 ```
 
@@ -123,7 +123,7 @@ knitr::include_graphics("figures/appMAgPIE_window.png")
 You can use filters to select a subset of all runs stored in the output folder of the model, for example by searching for runs that have been finished at a certain day or by searching for keywords in the title of the simulation runs:
 
 
-```{r, echo=FALSE, fig.cap="Run selection by using a filter", out.width = '30%',fig.align='center'}
+```{r, echo=FALSE, fig.cap="Run selection by using a filter", out.width = '70%',fig.align='center'}
 knitr::include_graphics("figures/appMAgPIE_runselection.png")
 ```
 
@@ -132,7 +132,7 @@ knitr::include_graphics("figures/appMAgPIE_runselection.png")
 Choose *title* as filter and select 2 simulations that are stored in the output folder of your model, e.g. the SSP2 and SSP3 simulations from the downloaded set of MAgPIE runs for the MAgPIE4 paper:
 
 
-```{r, echo=FALSE, fig.cap="How to use the title for filtering runs", out.width = '30%',fig.align='center'}
+```{r, echo=FALSE, fig.cap="How to use the title for filtering runs", out.width = '70%',fig.align='center'}
 knitr::include_graphics("figures/appMAgPIE_runselection_title.png")
 ```
 
@@ -149,7 +149,7 @@ knitr::include_graphics("figures/appMAgPIE_LinePlot.png")
 Now, choose a variable of your interest, either by scrolling through the drop-down menu or write a key word in the input field, e.g. "cropland", to reduce the options in the menu.
 
 
-```{r, echo=FALSE, fig.cap="Selection of variables for line plots", out.width = '30%',fig.align='center'}
+```{r, echo=FALSE, fig.cap="Selection of variables for line plots", out.width = '70%',fig.align='center'}
 knitr::include_graphics("figures/appMAgPIE_LinePlot_variables.png")
 ```
 
@@ -162,7 +162,7 @@ Now, make yourself familiar with the features of the app. You can for example se
 ### 5.1. Overview on the magpie4 library 
 If you want to go beyond visual output analysis and predefined output evaluation facilitated by scripts in the model folders **scripts/output/single** and **scripts/output/comparison**, you can use the functionality of the R package *magpie4* (https://github.com/pik-piam/magpie4). This library contains a list of common functions for extracting outputs from the MAgPIE model which are also the basis for the generation of the automated validation pdf. For a quick overview on the functions which are included in the library, you can scan the folder **magpie4/R**. The following figure shows a subset of R-files included in **magpie4/R**:
 
-```{r, echo=FALSE, fig.cap="Subset of R functions of the magpie4 library", out.width = '30%',fig.align='center'}
+```{r, echo=FALSE, fig.cap="Subset of R functions of the magpie4 library", out.width = '70%',fig.align='center'}
 knitr::include_graphics("figures/subset_functions_magpie4.png")
 ```
 
