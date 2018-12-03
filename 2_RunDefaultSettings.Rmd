@@ -5,9 +5,9 @@ date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Kristine Karstens (karstens@pik-potsdam.de)
 output:
   html_notebook: default
-  pdf_document: default
   toc: yes
   toc_float: true
+  pdf_document: default
 ---
 
 # 1. Introduction

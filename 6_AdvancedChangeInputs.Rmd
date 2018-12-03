@@ -2,9 +2,9 @@
 title: "Changing inputs in MAgPIE model"
 author: "Mi&#x0161;ko Stevanovi&#x0107; (stevanovic@pik-potsdam.de)"
 output:
+  pdf_document: default
   html_notebook: default
   html_document: default
-  pdf_document: default
   word_document: default
 subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 ---
@@ -51,7 +51,7 @@ Let us assume that the patch folder (`patch_inputdata`) is created in the main M
 dir.create("./patch_inputdata")
 ```
 or in the command line:
-```{cmd}
+```{cmd, eval=FALSE}
 mkdir patch_inputdata
 ```
 
@@ -78,7 +78,7 @@ file.copy(from="./scripts/npi_ndc/policies/policy_definitions.csv",
           to="./patch_inputdata/patch_ndc_usa_181206/.")
 ```
 or in the command line:
-```{cmd}
+```{cmd, eval=FALSE}
 cp scripts/npi_ndc/policies/policy_definitions.csv patch_inputdata/patch_ndc_usa_181206/.
 ```
 
