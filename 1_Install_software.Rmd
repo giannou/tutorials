@@ -1,5 +1,5 @@
 ---
-title: "Install the model and all software/data required"
+title: "Install the MAgPIE model and all software/data required"
 subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Anastasis Giannousakis (giannou@pik-potsdam.de)
@@ -11,16 +11,21 @@ output:
 ---
 
 ## HOW TO INSTALL
+There are two ways to download the MAgPIE model. If you have git installed clone the model from https://github.com/magpiemodel/magpie.git If you have no git installed you can alternatively download MAgPIE as a zip file from https://github.com/magpiemodel/magpie/archive/master.zip.
+
 MAgPIE requires *GAMS* (https://www.gams.com/) including licenses for the
-solvers *CONOPT* and (optionally) *CPLEX* for its core calculations. For the day
-of the workshop all licenses will be provided as time-limited training licenses. 
-As the model benefits significantly from recent improvements in *GAMS* and *CONOPT4* 
-it is recommended to work with the most recent versions of both. 
+solvers *CONOPT* and (optionally) *CPLEX* for its core calculations. As the model benefits significantly from recent improvements in *GAMS* and *CONOPT4* 
+it is recommended to work with the most recent versions of both. For the day
+of the workshop all licenses will be provided as time-limited training licenses (see below). 
 Please make sure that the GAMS installation path is added to the PATH variable
 of the system:
 
 * the easiest way to add is by simply checking the "Use advanced installation mode" box at the beginning of the installation. At a later step you have to tick again a checkbox that adds the GAMS path to your PATH variable
-* you can also edit your computer's advanced settings and add the GAMS path to the PATH variable manually (applies also if GAMS is installed but not included in PATH)
+* you can also edit your computer's advanced settings and add the GAMS path to the PATH variable manually (applies also if GAMS is installed but not included in PATH).
+
+This tutorial shows how to check and add variables to your PATH variable: https://www.youtube.com/watch?v=5P9EDJwfXBo
+
+Please add the GAMS training license you have been provided (gamslice.txt) by saving the file to your GAMS local folder. Under Windows something like `C:\Program Files (x86)\GAMS\24.3`
 
 In addition *R* (https://www.r-project.org/) is required for pre- and
 postprocessing and run management (needs to be added to the user's PATH variable
@@ -74,7 +79,8 @@ pkgs <- c("ggplot2",
           "magpiesets",
           "lusweave",
           "luscale",
-          "goxygen")
+          "goxygen",
+          "shinyresults")
 install.packages(pkgs)
 ```
 
