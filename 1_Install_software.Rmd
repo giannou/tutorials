@@ -94,7 +94,7 @@ If the following lines of code are executed withour error, then you are all set!
 ```{r, eval=FALSE}
 system("gams")
 library(gdxrrw)
-library(magpie)
+library(magpie4)
 print("")
 if(.Platform$OS.type == "unix") {
   system("which pdflatex")
