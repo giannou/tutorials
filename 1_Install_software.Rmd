@@ -45,6 +45,12 @@ download.file("https://support.gams.com/_media/gdxrrw:gdxrrw_1.0.2.zip",
               "gdxrrw_1.0.2.zip")
 install.packages("gdxrrw_1.0.2.zip",repos = NULL)
 ```
+
+It can be the case that the `R` installation reqiures a more up-to-date version of
+`gdxrrw` package. In that case, check on the webpage https://support.gams.com/gdxrrw:interfacing_gams_and_r
+for adequate package version and eventual additional information and then proceed 
+with download and install.
+
 In some cases it can happen that `gdxrrw` does not return an error message during
 installation but also did not install properly. To verify a successful
 installation try to load the package via `library(gdxrrw)`.
