@@ -3,11 +3,7 @@ title: "Install the MAgPIE model and all software/data required"
 subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Anastasis Giannousakis (giannou@pik-potsdam.de)
-output:
-  html_notebook: default
-  toc: yes
-  toc_float: true
-  pdf_document: default
+output: rmarkdown::github_document
 ---
 
 ## HOW TO INSTALL
