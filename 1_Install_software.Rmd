@@ -4,10 +4,10 @@ subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Anastasis Giannousakis (giannou@pik-potsdam.de)
 output:
-  pdf_document: default
+  html_notebook: default
   toc: yes
   toc_float: true
-  html_notebook: default
+  pdf_document: default
 ---
 
 ## HOW TO INSTALL
@@ -15,9 +15,7 @@ There are two ways to download the MAgPIE model. If you have git installed clone
 
 MAgPIE requires *GAMS* (https://www.gams.com/) including licenses for the
 solvers *CONOPT* and (optionally) *CPLEX* for its core calculations. As the model benefits significantly from recent improvements in *GAMS* and *CONOPT4* 
-it is recommended to work with the most recent versions of both. For the day
-of the workshop all licenses will be provided as time-limited training licenses (see below). 
-Please make sure that the GAMS installation path is added to the PATH variable
+it is recommended to work with the most recent versions of both. Please make sure that the GAMS installation path is added to the PATH variable
 of the system:
 
 * the easiest way to add is by simply checking the "Use advanced installation mode" box at the beginning of the installation. At a later step you have to tick again a checkbox that adds the GAMS path to your PATH variable
