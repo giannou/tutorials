@@ -2,10 +2,8 @@
 title: "Changing inputs in MAgPIE model"
 author: "Mi&#x0161;ko Stevanovi&#x0107; (stevanovic@pik-potsdam.de)"
 output:
-  pdf_document: default
-  html_notebook: default
-  html_document: default
-  word_document: default
+  rmarkdown::github_document:
+    toc: yes
 subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 ---
 

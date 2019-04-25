@@ -4,10 +4,8 @@ subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Abhijeet Mishra (mishra@pik-potsdam.de)
 output:
-  pdf_document: default
-  toc: yes
-  toc_float: true
-  html_notebook: default
+  rmarkdown::github_document:
+    toc: yes
 ---
 
 # 1. Introduction

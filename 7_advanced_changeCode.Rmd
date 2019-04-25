@@ -2,15 +2,13 @@
 title: "Advanced: Change MAgPIE GAMS Code"
 subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-author: Florian Humpenöder (humpenoeder@pik-potsdam.de)
+author: Florian HumpenÃ¶der (humpenoeder@pik-potsdam.de)
 output:
-  pdf_document: default
-  toc: yes
-  toc_float: true
-  html_notebook: default
+  rmarkdown::github_document:
+    toc: yes
 ---
 
-# 1. Learning objectives
+# Learning objectives
 
 MAgPIE has a modular concept. Each module (e.g. cropland) can have several realization (e.g. dynamic and static).
 This tutorial shows how to add a new realization to a module in 4 steps:
@@ -20,21 +18,22 @@ This tutorial shows how to add a new realization to a module in 4 steps:
 3. do simple modification in new realization
 4. choose realization in cfg and run model
 
-# 2. Getting started
+
+# Getting started
 
 We want to add a new realization to the cropland module.
 In the MAgPIE 4.0 release the cropland module (30_crop) has only one realization called "endo_jun13". In this realization irrigation of bioenergy crops is prohibited. We will add a new realization, based on "endo_jun13", which allows for irrigation of bioenergy crops. We will call the new new realization "bioen_irrig".
 
-# 2.1 Step 1
+## Step 1
 We first copy-paste the folder "endo_jun13" and the file "endo_jun13.gms" (both located in "modules/30_crop"), and rename them to "bioen_irrig" and "bioen_irrig.gms" respectivly.
 
-# 2.2 Step 2
+## Step 2
 To include the new realization "bioen_irrig" properly into the GAMS code we run a specific R command in the main folder. First navigate in your command line to the MAgPIE main folder, then open a new R session (type "R" followed by ENTER), and then copy-paste the following R command:
 ```{r comment=NA,eval=FALSE}
 lucode::update_modules_embedding()
 ```
 
-# 2.3 Step 3
+## Step 3
 The prohibition of irrigated bioenergy is specified in the file "presolve.gms" within the "bioen_irrig" realization.
 We just have to remove (or comment out) lines 7-9 from this file to allow for irrigation of bioenergy crops. 
 
@@ -44,7 +43,7 @@ We just have to remove (or comment out) lines 7-9 from this file to allow for ir
 *vm_area.fx(j,"betr","irrigated")=0;
 ```
 
-# 2.4 Step 4
+## Step 4
 To test the new realization we have to make a change in the file "config/default.cfg" in line 218.
 We change 
 ```{r comment=NA,eval=FALSE}

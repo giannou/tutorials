@@ -4,6 +4,7 @@ subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Anastasis Giannousakis (giannou@pik-potsdam.de)
 output: rmarkdown::github_document
+  
 ---
 
 ## HOW TO INSTALL
