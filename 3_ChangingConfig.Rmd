@@ -4,7 +4,7 @@ subtitle: MAgPIE model development team (magpie@pik-potsdam.de)
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 author: Abhijeet Mishra (mishra@pik-potsdam.de)
 output:
-  rmarkdown::pdf_document:
+  rmarkdown::github_document:
 #    toc: yes
     includes:  
       in_header: preamble.tex
@@ -35,32 +35,68 @@ MAgPIE 4.1 is designed on a *modular model structure*. This means that the diffe
 
 The goal of this exercise is to make changes to the *default* configuration. After completion of this exercise, you'll be able to:
 
+
 1. Understand how MAgPIE configuration works.
+
+\
+
 2. Change the title and number of simulation steps for your runs.
+
+\
+
 3. Select which outputs your model should generate.
+
+\
+
 4. Run the model with updated configuration.
 
+\
+
+\newpage
 
 # 2. Getting started
 
 As stated earlier, MAgPIE configuration (or settings) can be changed by hand using a normal text editor (notepad, notepad++ etc.). It is expected that the participants of the workshop have already set-up a MAgPIE clone^[**Cloning a repository**: https://help.github.com/en/articles/cloning-a-repository] from the latest MAgPIE version available on GitHub^[**MAgPIE repo**: https://github.com/magpiemodel/magpie].
 
-The folder where MAgPIE is cloned should typically contain the files^[Users may or may not see the **.git** folder in their model folder depending on their *hidden files and folder* settings.] as in Figure 1.
+The folder where MAgPIE is cloned should typically contain the files^[Users may or may not see the **.git** folder in their model folder depending on their *hidden files and folder* settings.] as in Figure 1. 
+\
 
-```{r, echo=FALSE, fig.cap="Contents of folder where MAgPIE is cloned.", out.width = '100%',fig.align='center'}
-knitr::include_graphics("figures/mag-clone.png")
-```
+![Contents of folder where MAgPIE is cloneds](figures/mag-clone.png)
 
+Make sure that you have the following files and folders:
+
+1. Folders : config, core, doc, modules, scripts, standalone
+\
+2. CITATION.cff
+\
+3. LICENCS
+\
+4. main.gms
+\
+5. CHANGELOG.md, README.md
+\
+6. output.R, scripts.R
+\
+7. .Rprofile, .gitignore, .travis.yml
+\
+
+\newpage
 # 3. MAgPIE configuration
 
 Users are requested to follow the following procedure in order to check the config file for MAgPIE:
 
-1. Naviagte to the folder where you have cloned MAgPIE.
-2. Look for the folder named **config**. 
-3. Within this **config** folder, look for the file **default.cfg**.
-4. Right click on **default.cfg** file and open it with a text editor of your choice.
-
-The first few lines of **deafult.cfg** file should look like the following (with licence text on top):
+\
+\
+1. Naviagte to the folder where you have cloned MAgPIE.\
+\
+2. Look for the folder named **config**. \
+\
+3. Within this **config** folder, look for the file **default.cfg**.\
+\
+4. Right click on **default.cfg** file and open it with a text editor of your choice.\
+\
+\
+The first few lines of **deafult.cfg** file should look like the following (with licence text on top): \
 
 ```{r, eval=FALSE}
 ##################
@@ -91,8 +127,12 @@ cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public"=
                            getOption("magpie_repos"))
 ```
 
-We can go through the contents of this file gradually but the description of core components from this file can be found in table 1 (as well as in the comments preceeding the respective settings in the config file).
 
+\
+\
+We can go through the contents of this file gradually but the description of core components from this file can be found in table 1 (as well as in the comments preceeding the respective settings in the config file). \
+
+\newpage
 ```{r,echo=FALSE}
 source("additional_data/default.cfg")
 ```
@@ -113,54 +153,67 @@ knitr::kable(data.frame(No = 1:length(names(cfg)),
 
 MAgPIE is modular in structure and the various modules can be seen in the **gms** section (cfg\$gms\$\*) of the config file. These modules in MAgPIE can be turned on to a select a *module realization* (in case of multiple *module realizations*, an off setting is also available). 
 
+\newpage
+
 # 4. Exercises
 
 ## 4.1. Changing the title
 
-Let us try to see what is the default title of MAgPIE runs. This can be seen by looking for the following text in default.cfg file (line 17):
+Let us try to see what is the default title of MAgPIE runs. This can be seen by looking for the following text in default.cfg file (line 17): 
+\
 
 ```{r comment=NA,eval=FALSE}
 cfg$title
 ```
 
-As you can see, the model is titled *default* for obvious reasons. Usually the **title** setting helps in creating the name of the **results** folder inside the **output** folder of the model. You can see this setting by searching for the following test in default.cfg file (line 619).
+As you can see, the model is titled *default* for obvious reasons. Usually the **title** setting helps in creating the name of the **results** folder inside the **output** folder of the model. You can see this setting by searching for the following test in default.cfg file (line 619). 
+\
 
 ```{r comment=NA,eval=FALSE}
 cfg$results_folder
 ```
 
-*output/:title::date:* tells us that the results from a MAgPIE run are stored within the **output** folder where another sub-folder is created automatically for each run. The name of this *results folder* is a combination of **model title** and the **current date**. Usually you can use any character string for the results folder name but it is important to remember that the model execution stops if a result folder by the same name exists.
+*output/:title::date:* tells us that the results from a MAgPIE run are stored within the **output** folder where another sub-folder is created automatically for each run. The name of this *results folder* is a combination of **model title** and the **current date**. Usually you can use any character string for the results folder name but it is important to remember that the model execution stops if a result folder by the same name exists. 
+\
 
 ```{r, eval=FALSE}
 Question:
 
-If you happen to start a MAgPIE run right now, can you guess the name of the results folder
-within the output folder?
+If you happen to start a MAgPIE run right now, can you guess the name of the 
+results folder within the output folder?
 ```
-In order to change the default tile, users are requested to edit the setting so as to contain their **affiliation** within the quotations and save the file after editing. The default setting of title:
+
+\
+
+In order to change the default tile, users are requested to edit the setting so as to contain their **affiliation** within the quotations and save the file after editing. The default setting of title: 
+\
 
 ```{r, eval = FALSE}
 cfg$title <- "default"
 ``` 
 
-Should be changed in the following format: 
+Should be changed in the following format:  
 
 ```{r, eval = FALSE}
 cfg$title <- "mag4workshop_<affiliation>"
 ``` 
 
-For example:
+For example: 
+\
 ```{r, eval = FALSE}
 cfg$title <- "mag4workshop_PIK"
 ``` 
 
 ## 4.2. Changing the time step
 
-MAgPIE, being a recursive dynamic model, can run with various levels of time steps. These time steps are usually in five year time intervals but you can also run MAgPIE with ten year time steps (or a combination thereof). 
+MAgPIE, being a recursive dynamic model, can run with various levels of time steps. 
+
+These time steps are usually in five year time intervals but you can also run MAgPIE with ten year time steps (or a combination thereof). 
 
 A full set of **time-step** settings^[The time step settings are within the **gms** component of the **cfg** list.] can be found in the core sets defined in the model code under **core/sets.gms**. 
 
-Current time-step setting can be found by looking for the following text in deafult.cfg file (line 80):
+Current time-step setting can be found by looking for the following text in deafult.cfg file (line 80): 
+\
 
 ```{r, warning=FALSE, eval=FALSE}
 cfg$gms$c_timesteps
@@ -170,13 +223,15 @@ cfg$gms$c_timesteps
 
 In this exercise, we'll try to change this default time-step setting to **5** which corresponds to the years **y1995, y2000, y2010, y2020 and y2030**. Note that MAgPIE starts simlations in y1995. 
 
-Similar to how we updated the title, you can simply delete "coup2100" from the line containing
-
+Similar to how we updated the title, you can simply delete "coup2100" from the line containing 
+\
+ 
 ```{r, warning=FALSE, eval=FALSE}
 cfg$gms$c_timesteps <- "coup2100"
 ``` 
 
-and set it to 5
+and set it to 5 
+\
 
 ```{r, warning=FALSE, eval=FALSE}
 cfg$gms$c_timesteps <- 5
@@ -184,7 +239,8 @@ cfg$gms$c_timesteps <- 5
 
 ## 4.3. Changing the ouputs generated
 
-MAgPIE is also capable of generating some stylized outputs which can be created automatically once the model run is finished. To see the current output generation settings, look for the following text in the default.cfg file (line 614):
+MAgPIE is also capable of generating some stylized outputs which can be created automatically once the model run is finished. To see the current output generation settings, look for the following text in the default.cfg file (line 614): 
+\
 
 ```{r, warning=FALSE, eval=FALSE}
 cfg$output 
@@ -194,25 +250,39 @@ These ouputs^[Complete list of output R scripts can be found in **scripts/output
 
 The default MAgPIE configuration runs **rds_report** (to be used in appResults), **validation** (as a pdf) and **interpolation** scripts after a model run is finished. Usually, the creation of validation pdf takes quite some, generating a pdf file of about 1500 pages. 
 
-In this exercise, we'll exclude the creation of validation pdf (after a model run) due to time constraints. To do so, you can delete "rds_report","validation","interpolation" from
+In this exercise, we'll exclude the creation of validation pdf (after a model run) due to time constraints. To do so, you can delete "rds_report","validation","interpolation" from 
+\
 
 ```{r, warning=FALSE, eval=FALSE}
 cfg$output <- c("rds_report","validation","interpolation")
 ``` 
 
-and replace it with "rds_report","interpolation"
+and replace it with "rds_report","interpolation" 
+\
 
 ```{r, warning=FALSE, eval=FALSE}
 cfg$output <- c("rds_report","interpolation")
 ``` 
 
-## 4.4. Running the model with updated configuration
+\newpage
+
+# 5. Running the model with updated configuration
 
 So far, we have successfully changed:
 
+\
+
 1. Title of MAgPIE runs
+
+\
+
 2. Time steps of simulation
+
+\
+
 3. Outputs desired
+
+\
 
 Now, Lets try to run the model with this updated configuration. 
 
@@ -220,7 +290,8 @@ To do so, windows users can go to the folder where MAgPIE was cloned and open a 
 
 For mac users (if right click -> open terminal setting is not enabled), Head into System Preferences and select Keyboard > Shortcuts > Services. Find "New Terminal at Folder" in the settings and click the box. Now, when you're in Finder, just right-click a folder and you're shown the open to open Terminal. 
 
-In the command prompt (or powershell or terminal) you just opened, use the following command:
+In the command prompt (or powershell or terminal) you just opened, use the following command: 
+\
 ```{r, eval = FALSE}
 Rscript start.R
 ``` 
