@@ -6,6 +6,8 @@ author: Abhijeet Mishra (mishra@pik-potsdam.de)
 output:
   rmarkdown::pdf_document:
 #    toc: yes
+    includes:  
+      in_header: preamble.tex
 ---
 
 \tableofcontents
@@ -19,9 +21,9 @@ output:
 
 In computing, configuration files (or config files) are files used to configure the parameters and initial settings for some computer programs. In MAgPIE context, a config file applies desired settings to the model. MAgPIE users may be expected to modify config files by hand using a simple text editor as these files are human-editable plain texts. 
 
-MAgPIE model reads its configuration file just before starting a model run. Editing these config files by hand maybe practical in cases where a user is making one run at a time but more often than not, users may have to work with a combination of different settings for the model. 
+MAgPIE reads its configuration file just before starting a model run. Editing these config files by hand maybe practical in cases where a user is making one run at a time but more often than not, users may have to work with a combination of different settings for the model. 
 
-For example, a user may want to run two different trade scenarios in MAgPIE (bilateral & free-trade) and along with this, a user may also want to run  two different policy scenarios (with and without CO2 prices). In this case, the total number of runs needd is 2\*2=4. In such cases, editing config files by hand is not advisable. Here, a good programming practice would be to rather change these config files using an R script which changes the config settings in automatised manner. We'll discuss *writing your own start script* in the next session.
+We'll discuss *writing your own start script* in the next session which changes the model setting automatically.
 
 ## 1.2. Relevence to MAgPIE 
 
@@ -43,7 +45,7 @@ The goal of this exercise is to make changes to the *default* configuration. Aft
 
 As stated earlier, MAgPIE configuration (or settings) can be changed by hand using a normal text editor (notepad, notepad++ etc.). It is expected that the participants of the workshop have already set-up a MAgPIE clone^[**Cloning a repository**: https://help.github.com/en/articles/cloning-a-repository] from the latest MAgPIE version available on GitHub^[**MAgPIE repo**: https://github.com/magpiemodel/magpie].
 
-The folder where MAgPIE is clone should typically contain the files^[Users may or may not see the **.git** folder in their model folder depending on their *hidden files and folder* settings.] as in Figure 1.
+The folder where MAgPIE is cloned should typically contain the files^[Users may or may not see the **.git** folder in their model folder depending on their *hidden files and folder* settings.] as in Figure 1.
 
 ```{r, echo=FALSE, fig.cap="Contents of folder where MAgPIE is cloned.", out.width = '100%',fig.align='center'}
 knitr::include_graphics("figures/mag-clone.png")
@@ -58,16 +60,9 @@ Users are requested to follow the following procedure in order to check the conf
 3. Within this **config** folder, look for the file **default.cfg**.
 4. Right click on **default.cfg** file and open it with a text editor of your choice.
 
-The contents of **deafult.cfg** file should look like the following:
+The first few lines of **deafult.cfg** file should look like the following (with licence text on top):
 
 ```{r, eval=FALSE}
-# |  (C) 2008-2019 Potsdam Institute for Climate Impact Research (PIK)
-# |  authors, and contributors see CITATION.cff file. This file is part
-# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
-# |  AGPL-3.0, you are granted additional permissions described in the
-# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
-# |  Contact: magpie@pik-potsdam.de
-
 ##################
 #### SETTINGS ####
 ##################
