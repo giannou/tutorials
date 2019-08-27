@@ -25,7 +25,7 @@ For R, some packages are required to run MAgPIE. All are either distributed via 
 options(repos = c(CRAN = "@CRAN@", pik = "https://rse.pik-potsdam.de/r/packages"))
 ```
 
-After that all remaining packages can be installed via `install.packages`
+After that, all necessary packages can be installed via `install.packages`
 
 ``` r
 pkgs <- c("gdxrrw",
